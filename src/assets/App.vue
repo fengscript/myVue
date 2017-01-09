@@ -5,9 +5,11 @@
         <ul class="todoList">
             <li v-for="item in items" v-on:click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
+                <!--<button class="del" title="remove a list">×</button>-->
             </li>
+            <span class="delAll">Delete All</span>
         </ul>
-        <!--<img src="./assets/close.png" alt="">-->
+       
     </div>
 </template>
 <script>
@@ -16,7 +18,8 @@ export default{
     data(){
         return{
             items:Store.get(),
-            newItem:''
+            newItem:'',
+            isFinished:false,
         }
     },
     watch:{
@@ -29,7 +32,7 @@ export default{
     },
     methods:{
         toggleFinish(item){
-            console.log(item.isFinished = !item.isFinished)
+            item.isFinished = !item.isFinished;
         },
         setNew(){
             if(this.newItem!=''){
@@ -41,35 +44,42 @@ export default{
             }else{
                 alert("什么东西都木有！")
             }
-            
-        }
+        },
     }
 }
 </script>
 <style>
+.delAll{
+    display: block;
+    font-size: 24px;
+    margin-top: 50px;
+}
 .finished{
     text-decoration: line-through;
+    color: red;
 }
-    .container input {
-        margin: 50px auto;
-        width: 40%;
-        height: 60px;
-        display: block;
-        font-size: 30px;
-        text-indent: 12px;
-    }
+.container input {
+    margin: 50px auto;
+    width: 40%;
+    height: 60px;
+    display: block;
+    font-size: 30px;
+    text-indent: 12px;
     
-    .container img {
-        width: 32px;
-        max-width: 100%
-    }
-    
-    .todoList {
-        margin: 50px auto;
-        width: 40%;
-        height: 60px;
-        display: block;
-        font-size: 30px;
-        text-indent: 12px;
-    }
+}
+
+.del{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.todoList {
+    cursor: pointer;
+    margin: 50px auto;
+    width: 40%;
+    height: 60px;
+    display: block;
+    font-size: 30px;
+    text-indent: 12px;
+}
 </style>
