@@ -5,5 +5,11 @@ export default{
   },
   set(items){
     window.localStorage.setItem(storage_key,JSON.stringify(items))
+  },
+  delOne(items){
+  window.localStorage.removeItem(items);
+  },
+  delAll(){
+    window.localStorage.clear()
   }
 }
