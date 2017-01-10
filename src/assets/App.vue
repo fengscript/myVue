@@ -7,7 +7,7 @@
                 {{item.content}}
                 <!--<button class="del" title="remove a list">×</button>-->
             </li>
-            <span class="delAll">Delete All</span>
+            <span class="delAll" @click="delAll">Delete All</span>
         </ul>
        
     </div>
@@ -45,6 +45,10 @@ export default{
                 alert("什么东西都木有！")
             }
         },
+        delAll(){
+            Store.delAll();
+            window.location.reload();
+        },
     }
 }
 </script>
@@ -53,6 +57,7 @@ export default{
     display: block;
     font-size: 24px;
     margin-top: 50px;
+    color: #cccccc;
 }
 .finished{
     text-decoration: line-through;
@@ -81,5 +86,6 @@ export default{
     display: block;
     font-size: 30px;
     text-indent: 12px;
+    color: #333333;
 }
 </style>
