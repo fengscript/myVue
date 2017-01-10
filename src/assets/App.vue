@@ -45,6 +45,7 @@ export default{
                 alert("什么东西都木有！")
             }
         },
+        delOne(){},
         delAll(){
             Store.delAll();
             window.location.reload();
