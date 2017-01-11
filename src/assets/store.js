@@ -1,13 +1,18 @@
 const storage_key = 'fygtodolist'
 export default{
   get(){
-    return JSON.parse(window.localStorage.getItem(storage_key) || '[]')
+    var todos =  JSON.parse(window.localStorage.getItem(storage_key) || '[]')
+    todos.forEach(function (todo, index) { 
+      todo.id = index;
+     })
+     todos.uid = todos.length;
+     return todos;
   },
-  set(items){
-    window.localStorage.setItem(storage_key,JSON.stringify(items))
+  set(todos){
+    window.localStorage.setItem(storage_key,JSON.stringify(todos))
   },
-  delOne(items){
-  window.localStorage.removeItem(items);
+  delOne(todo){
+    this.todos.splice(this.todos.indexOf(todo), 1)
   },
   delAll(){
     window.localStorage.clear()
