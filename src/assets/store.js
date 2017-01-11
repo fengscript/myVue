@@ -11,10 +11,7 @@ export default{
   set(todos){
     window.localStorage.setItem(storage_key,JSON.stringify(todos))
   },
-  delOne(todo){
-    this.todos.splice(this.todos.indexOf(todo), 1)
-  },
   delAll(){
     window.localStorage.clear()
-  }
+  },
 }
