@@ -5,7 +5,7 @@
         <ul class="todoList">
             <li v-for="item in items" v-on:click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
-                <button class="del" title="remove a list" @click="delOne(todo)">×</button>
+                <button class="del" @click="delOne(item)">×</button>
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
@@ -45,8 +45,8 @@ export default{
                 alert("什么东西都木有！")
             }
         },
-        delOne(todo){
-            this.items.splice(this.items.indexOf(todo, 1))
+        delOne(item){
+            this.items.splice(this.items.indexOf(item),1)
         },
         delAll(){
             Store.delAll();
