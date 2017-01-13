@@ -12,8 +12,10 @@
        
     </div>
 </template>
+<modal></modal>
 <script>
 import Store from './store.js'
+import Modal from './Modal.vue'
 export default{
     data(){
         return{
@@ -53,7 +55,9 @@ export default{
             window.location.reload();
         }
     }
+    
 }
+render:h=>h(Modal)
 </script>
 <style>
 .delAll{
