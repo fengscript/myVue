@@ -1,5 +1,5 @@
-<template id="modalbg" lang="html">
-  <div class="modalbody">
+<template id="toastbg" lang="html">
+  <div class="toastbody">
     {{a}}
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="css">
-.modal{
+.toast{
   position: fixed;
   z-index: 999;
   background: rgba(0,0,0,0.15);

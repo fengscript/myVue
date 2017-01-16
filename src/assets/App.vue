@@ -9,13 +9,13 @@
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
-       
-    </div>
+        <toast></toast>
+    </div>  
 </template>
-<modal></modal>
+
 <script>
 import Store from './store.js'
-import Modal from './Modal.vue'
+import Toast from './Toast.vue'
 export default{
     data(){
         return{
@@ -23,6 +23,9 @@ export default{
             newItem:'',
             isFinished:false,
         }
+    },
+    components:{
+        Toast
     },
     watch:{
         items:{
