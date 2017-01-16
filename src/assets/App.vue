@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import './Reset.css'
 import Store from './store.js'
 import Toast from './Toast.vue'
 export default{
