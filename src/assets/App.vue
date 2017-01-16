@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <modal v-if="modal"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew"
         v-model="newItem">
         <ul class="todoList">
@@ -17,16 +18,18 @@
 import './Reset.css'
 import Store from './store.js'
 import Toast from './Toast.vue'
+import Modal from './Modal.vue'
 export default{
     data(){
         return{
             items:Store.get(),
             newItem:'',
             isFinished:false,
+            modal:true
         }
     },
     components:{
-        Toast
+        Toast,Modal
     },
     watch:{
         items:{
@@ -73,13 +76,14 @@ render:h=>h(Modal)
     text-decoration: line-through;
     color: red;
 }
+.container{display: flex;flex-wrap: wrap;}
 .container input {
-    margin: 50px auto;
+    margin:50px 30%;
     width: 40%;
     height: 60px;
-    display: block;
     font-size: 30px;
     text-indent: 12px;
+    justify-content: center;
     
 }
 

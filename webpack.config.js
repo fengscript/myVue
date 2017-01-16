@@ -37,11 +37,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style!css"
+        loader: "style-loader!css-loader"
       },
       {
         test: /\.(eot|woff|woff2|ttf)([\\?]?.*)$/,
-        loader: "file"
+        loader: "file-loader"
       }
     ]
   },
