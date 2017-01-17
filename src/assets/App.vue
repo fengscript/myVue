@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <modal v-if="modal"></modal>
+        <modal v-show="modalShow" v-modal="modalShow"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew"
         v-model="newItem">
         <ul class="todoList">
@@ -23,7 +23,7 @@ export default{
             items:Store.get(),
             newItem:'',
             isFinished:false,
-            modal:false
+            modalShow:false,
         }
     },
     components:{
@@ -38,6 +38,10 @@ export default{
         }
     },
     methods:{
+        modal(flag){
+            console.log(this.modal)
+            this.modal = msg;
+        },
         toggleFinish(item){
             item.isFinished = !item.isFinished;
         },
@@ -53,8 +57,9 @@ export default{
             }
         },
         delOne(item){
-            this.modal = true;
-            this.items.splice(this.items.indexOf(item),1)
+            this.modalShow = !this.modalShow;
+
+            // this.items.splice(this.items.indexOf(item),1)
         },
         delAll(){
             this.modal = true;
