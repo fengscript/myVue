@@ -1,6 +1,6 @@
 <template id="toastbg" lang="html">
   <div class="toastbody">
-    {{a}}
+    {{tips}}
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   data(){
     return {
-      a:'1111111111'
+      tips:'是否删除'
     }
   }
 }

@@ -10,14 +10,12 @@
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
-        <toast></toast>
     </div>  
 </template>
 
 <script>
 import './Reset.css'
 import Store from './store.js'
-import Toast from './Toast.vue'
 import Modal from './Modal.vue'
 export default{
     data(){
@@ -25,11 +23,11 @@ export default{
             items:Store.get(),
             newItem:'',
             isFinished:false,
-            modal:true
+            modal:false
         }
     },
     components:{
-        Toast,Modal
+        Modal
     },
     watch:{
         items:{
@@ -55,9 +53,11 @@ export default{
             }
         },
         delOne(item){
+            this.modal = true;
             this.items.splice(this.items.indexOf(item),1)
         },
         delAll(){
+            this.modal = true;
             Store.delAll();
             window.location.reload();
         }
@@ -90,6 +90,11 @@ render:h=>h(Modal)
 .del{
     font-size: 30px;
     font-weight: bold;
+    outline: 0;
+    background:rgba(0, 0, 0, 0);
+    border: 0;
+    color: #ff5144;
+    cursor: pointer;
 }
 
 .todoList {
