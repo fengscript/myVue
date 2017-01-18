@@ -16,18 +16,24 @@
         data() {
             return {
                 tipsContent: '是否删除？',
-                tipShow: true,
-                modalShow: true
             }
         },
+        computed: {
+            modalShow(){
+                return this.modalShow = this.modalControl.modalShowWrapper;
+            },
+            tipShow(){
+                return this.tipShow = this.modalControl.modalShowWrapper;
+            }
+        },
+        props: ['modalControl'],
         methods: {
             btnNo() {
-                this.tipShow = false;
-                this.modalShow = false;
+                this.modalControl.modalShowWrapper = false;
             },
-            // modalControl(){
-            //     this.$emit('modal-control',modalShow)
-            // }
+            btnYes() {
+                console.log(111)
+            }
         },
     }
 </script>
