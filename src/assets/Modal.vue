@@ -16,6 +16,7 @@
         data() {
             return {
                 tipsContent: '是否删除？',
+                del:true
             }
         },
         computed: {
@@ -32,7 +33,9 @@
                 this.modalControl.modalShowWrapper = false;
             },
             btnYes() {
-                console.log(111)
+                
+                this.$emit('modalYes',this.del);
+                this.modalControl.modalShowWrapper = false;
             }
         },
     }

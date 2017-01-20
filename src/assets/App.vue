@@ -4,12 +4,13 @@
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew"
         v-model="newItem">
         <ul class="todoList">
-            <li v-for="item in items" v-on:click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
+            <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
-                <button class="del" @click="delOne(item)">×</button>
+                <button class="del" @click="delOne" >×</button>
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
+        <button @modalYes="del(res)">TEST</button>
     </div>  
 </template>
 
@@ -56,6 +57,10 @@ export default{
             }else{
                 alert("什么东西都木有！")
             }
+        },
+        del(res){
+            alert(res)
+            // this.items.splice(this.items.indexOf(item),1)
         },
         delOne(item){
            this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
