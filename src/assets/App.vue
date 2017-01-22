@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <modal :modalControl="modalOption"></modal>
+        <modal :modalControl="modalOption" @modalYes="del"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew"
         v-model="newItem">
         <ul class="todoList">
@@ -10,7 +10,7 @@
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
-        <button @modalYes="del(res)">TEST</button>
+        <!--<button @modalYes="del(res)">TEST</button>-->
     </div>  
 </template>
 
@@ -41,9 +41,6 @@ export default{
         }
     },
     methods:{
-        test(){
-            alert(this.modalOption.a)
-        },
         toggleFinish(item){
             item.isFinished = !item.isFinished;
         },
@@ -59,7 +56,7 @@ export default{
             }
         },
         del(res){
-            alert(res)
+            alert(res);
             // this.items.splice(this.items.indexOf(item),1)
         },
         delOne(item){
