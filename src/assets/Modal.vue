@@ -16,7 +16,7 @@
         data() {
             return {
                 tipsContent: '是否删除？',
-                del:true
+                del:'111'
             }
         },
         computed: {
