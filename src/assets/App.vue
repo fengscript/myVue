@@ -6,7 +6,7 @@
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
-                <button class="del" @click="delOne" >×</button>
+                <button class="del" @click="delOne">×</button>
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
@@ -26,7 +26,7 @@ export default{
             isFinished:false,
             modalOption:{
                 modalShowWrapper:false
-            }
+            },
         }
     },
     components:{
@@ -59,15 +59,20 @@ export default{
             alert(res);
             // this.items.splice(this.items.indexOf(item),1)
         },
+        delConfirm(){
+            alert(222)
+            //  this.items.splice(this.items.indexOf(item),1)
+        },
         delOne(item){
            this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
+           
             // this.items.splice(this.items.indexOf(item),1)
         },
         delAll(){
             Store.delAll();
             window.location.reload();
         }
-    }
+    },
     
 }
 render:h=>h(Modal)
