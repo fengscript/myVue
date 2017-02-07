@@ -11,7 +11,9 @@
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
         <!--<button @modalYes="del(res)">TEST</button>-->
-    </div>  
+        
+        <button class="btn">路由测试</button>
+    </div>
 </template>
 
 <script>
@@ -78,6 +80,17 @@ export default{
 render:h=>h(Modal)
 </script>
 <style>
+.btn{
+    width: 100px;
+    height: 40px;
+    background: #ff5144;
+    color:#ffffff;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 .delAll{
     display: block;
     font-size: 24px;
