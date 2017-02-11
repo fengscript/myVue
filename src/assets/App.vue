@@ -25,11 +25,10 @@
 </template>
 <script>
     import './Reset.css'
-    // import VueRouter from 'vue-router'
+
     import Store from './store.js'
     import Modal from './Modal.vue'
-    // import Home from './Home.vue'
-    // import News from './News.vue'
+
     export default {
         data() {
             return {
