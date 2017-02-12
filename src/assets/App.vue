@@ -1,25 +1,26 @@
 <template>
     <div class="container">
-        <div class="router-root">
-            <router-link to="/home">主页</router-link>
-            <router-link to="/news">新闻</router-link>
-        </div>
-
-
         <modal :modalControl="modalOption" @modalYes="delConfirm"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
+        <div class="routeArea">
+            <router-link to="/news" class="detail-btn">使用说明</router-link>
+            <router-link to="/home" class="detail-btn">返回</router-link>
+            <span class="delAll-btn" @click="delAll">全部删除</span>
+            
+        </div>
+        
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
                 <button class="del" @click="delOne(item)">×</button>
             </li>
-            <span class="delAll" @click="delAll">Delete All</span>
-        </ul>
-        
-        <button class="test-btn">路由测试</button>
-        <div>
             <router-view></router-view>
+        </ul>
+        <div>
+            
         </div>
+        
+        
     </div>
 </template>
 <script>
@@ -96,43 +97,21 @@
 
 </script>
 <style>
-    .test-btn {
-        width: 100px;
-        height: 40px;
-        background: #ff5144;
-        color: #ffffff;
-        border: 0;
-        outline: 0;
-        position: absolute;
-        right: 0;
-        bottom: 0;
+.container {
+
     }
-    
-    .delAll {
-        display: block;
-        font-size: 24px;
-        margin-top: 50px;
-    }
-    
-    .finished {
-        text-decoration: line-through;
-        color: red;
-    }
-    
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    
     .container input {
-        margin: 50px 30%;
-        width: 40%;
         height: 60px;
         font-size: 30px;
         text-indent: 12px;
         justify-content: center;
     }
-    
+    .routeArea,
+    .container input,
+    .todoList{
+        margin:20px 30% 0 30%;
+        width: 40%;
+    }
     .del {
         font-size: 30px;
         font-weight: bold;
@@ -141,15 +120,37 @@
         border: 0;
         color: #ff5144;
         cursor: pointer;
+        visibility: hidden;
+        margin-left: 100px;
     }
-    
+    .todoList li:hover .del{
+        visibility: visible;
+    }
     .todoList {
         cursor: pointer;
-        margin: 50px auto;
-        width: 40%;
-        height: 60px;
         display: block;
         font-size: 30px;
         text-indent: 12px;
     }
+    .detail-btn,
+    .delAll-btn{
+        display: inline-block;
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+        color: #666666;
+        cursor: pointer;
+    }
+    .detail-btn:hover{
+        color: #83FCD8;
+    }
+    .delAll-btn:hover{
+        color: red;
+    }
+    .finished {
+        text-decoration: line-through;
+        color: red;
+    }
+    
+    
 </style>
