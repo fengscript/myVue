@@ -6,16 +6,15 @@
         </div>
 
 
-        <modal :modalControl="modalOption" @modalYes="del"></modal>
+        <modal :modalControl="modalOption" @modalYes="delConfirm"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
-                <button class="del" @click="delOne">×</button>
+                <button class="del" @click="delOne(item)">×</button>
             </li>
             <span class="delAll" @click="delAll">Delete All</span>
         </ul>
-        <!--<button @modalYes="del(res)">TEST</button>-->
         
         <button class="test-btn">路由测试</button>
         <div>
@@ -38,6 +37,7 @@
                 modalOption: {
                     modalShowWrapper: false
                 },
+                itemTemp:0
             }
         },
         components: {
@@ -66,18 +66,13 @@
                     alert("什么东西都木有！")
                 }
             },
-            del(res) {
-                alert(res);
-                // this.items.splice(this.items.indexOf(item),1)
-            },
-            delConfirm() {
-                alert(222)
-                //  this.items.splice(this.items.indexOf(item),1)
+            delConfirm(res) {
+                if( res == true)
+                this.items.splice(this.items.indexOf(this.itemTemp),1)
             },
             delOne(item) {
+                this.itemTemp = item; 
                 this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
-
-                // this.items.splice(this.items.indexOf(item),1)
             },
             delAll() {
                 Store.delAll();
