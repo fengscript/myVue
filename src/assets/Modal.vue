@@ -3,7 +3,7 @@
         <div v-show="modalShow" id="modalbg">
             <div v-show="tipShow" class="tips">
                 <span>{{tipsContent}}</span>
-                <div class="btn">
+                <div class="btnGroup">
                     <button @click="btnNo" class="btn-gray">No</button>
                     <button @click="btnYes" class="btn-green">Yes</button>
                 </div>
@@ -71,7 +71,7 @@
         font-size: 24px;
     }
     
-    .btn button {
+    .btnGroup button {
         outline: 0;
         background: rgba(0, 0, 0, 0);
         width: 80px;
