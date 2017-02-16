@@ -1,5 +1,5 @@
 <template>
     <div class="root">
-        <h1>主页</h1>
+        <h1>我是一大堆说明</h1>
     </div>
 </template>

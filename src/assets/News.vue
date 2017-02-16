@@ -1,13 +1,5 @@
 <template>  
-  
-   <div class="list-group">  
-     <a href="#" class="list-group-item active">  
-       这里是列表页  
-     </a>  
-     <a href="#" class="list-group-item">Dapibus ac facilisis in</a>  
-     <a href="#" class="list-group-item">Morbi leo risus</a>  
-     <a href="#" class="list-group-item">Porta ac consectetur ac</a>  
-     <a href="#" class="list-group-item">Vestibulum at eros</a>  
-   </div>  
-  
+  <div class="root">
+    <h2>下次记得用 slot 来处理模态框 删除 全部删除的提示词</h2>
+  </div>  
 </template>  

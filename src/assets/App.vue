@@ -3,12 +3,17 @@
         <modal :modalControl="modalOption" @modalYes="delConfirm"></modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
         <div class="routeArea">
-            <router-link to="/news" class="btn trans detail-btn">使用说明</router-link>
-            <router-link to="/home" class="btn trans detail-btn">返回</router-link>
+            <span @click='explainIt()'>
+                <router-link to="/home" class="btn trans detail-btn">使用说明</router-link>
+            </span>
+            <span v-if="explainTrigger">
+                <router-link to="/news"  class="btn trans detail-btn">我知道了</router-link>
+            </span>
+            
             <span class="btn delAll-btn trans" @click="delAll">全部删除</span>
             
         </div>
-        
+        <router-view class="routerView"></router-view>
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
@@ -16,7 +21,7 @@
             </li>
             
         </ul>
-        <router-view></router-view>
+        
     </div>
 </template>
 <script>
@@ -33,7 +38,8 @@
                 modalOption: {
                     modalShowWrapper: false
                 },
-                itemTemp:0
+                itemTemp:0,
+                explainTrigger:false
             }
         },
         components: {
@@ -73,6 +79,9 @@
             delAll() {
                 Store.delAll();
                 window.location.reload();
+            },
+            explainIt(){
+                this.explainTrigger = true;
             }
         }
     }
@@ -100,9 +109,13 @@
 }
 .routeArea,
 .container input,
-.todoList{
+.todoList,
+.routerView{
     margin:20px 30% 0 30%;
     width: 40%;
+}
+.routerView{
+    color: #cccccc;
 }
 .del {
     font-size: 30px;
