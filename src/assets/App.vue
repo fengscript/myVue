@@ -4,9 +4,9 @@
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
 
 
-            <span @click='explainIt()'>
+            <!--<span @click='explainIt()'>
                 <router-link to="/home" class="btn trans detail-btn">展开说明</router-link>
-            </span>
+            </span>-->
             <!--
             <span v-if="explainTrigger">
                 <router-link to="/news"  class="btn trans detail-btn">我知道了</router-link>
@@ -15,13 +15,13 @@
             <span v-if="itemCont" class="btn delAll-btn trans" @click="delAll">全部删除</span>
             
 
-        <router-view class="routerView"></router-view>
+        
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
                 <button class="del" @click="delOne(item)">×</button>
             </li>
-            
+            <router-view class="routerView"></router-view>
         </ul>
         
     </div>
@@ -112,21 +112,21 @@
 
 </script>
 <style>
-.container input {
-    height: 60px;
+.container{
+    margin-top: 20px;
+    height: auto;
     font-size: 30px;
     text-indent: 12px;
-    justify-content: center;
+    text-align: center;
 }
-.routerView{
-    float: left;
-    margin-left: 30px
+.container input{
+    text-indent: 18px;
+    margin: 10px 0 20px;
 }
 .container input,
 .todoList
 {
-    margin:20px 30% 0 30%;
-    width: 40%;
+    min-width: 300px;
 }
 .routerView{
     color: #57D2F7;
