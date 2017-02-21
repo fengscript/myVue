@@ -116,12 +116,14 @@
     margin-top: 20px;
     height: auto;
     font-size: 30px;
-    text-indent: 12px;
     text-align: center;
 }
 .container input{
     text-indent: 18px;
     margin: 10px 0 20px;
+}
+.todoList li{
+margin-left: -80px;
 }
 .container input,
 .todoList
