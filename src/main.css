@@ -1,14 +1,14 @@
 /*css for index.html*/
 
-.btn{
-    display: inline-block;
-        width: 100px;
-        height: 40px;
-        font-size: 20px;
-        color: #666666;
-        cursor: pointer;
-        border: 0;
-        outline: 0;
+.delAll-btn{
+    position: absolute;
+    top: 50px;
+    margin-left: 20px;
+    font-size: 20px;
+    color: #666666;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
 }
 .trans{
     -webkit-transition: all 0.3s;

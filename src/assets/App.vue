@@ -15,7 +15,6 @@
         <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
 
 
-
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
@@ -42,7 +41,7 @@
                 },
                 itemTemp: 0,
                 explainTrigger: false,
-                // itemCount: false,
+                itemCount: false,
             }
         },
         components: {
@@ -55,21 +54,12 @@
                 },
                 deep: true
             },
-            // itemCount:{
-            //     handler(itemTemp){
-            //         if(athis.itemTemp.length > 1){
-            //             // itemCount == true
-            //             alert(111)
-            //         }
-            //     }
-            // }
         },
         computed: {
-            itemCount() {
-                if (this.itemTemp.length > 1) {
-                    alert(111)
-                }
-            }
+            itemCount(){
+                    if ( this.items.length > 0)
+                    return true;
+            },
         },
         methods: {
             toggleFinish(item) {
@@ -123,16 +113,10 @@
         font-size: 30px;
         text-align: center;
     }
-
     .container input {
         text-indent: 18px;
         margin: 40px 0 20px;
     }
-
-    .todoList li {
-        /*margin-left: -80px;*/
-    }
-
     .container input,
     .todoList {
         min-width: 300px;
@@ -142,7 +126,9 @@
         color: #57D2F7;
         font-size: 16px;
     }
-
+    .routerView:hover{
+        cursor: initial;
+    }
     .del {
         font-size: 30px;
         font-weight: bold;
