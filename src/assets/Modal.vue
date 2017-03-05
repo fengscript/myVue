@@ -6,6 +6,7 @@
                 <div class="btnGroup">
                     <button @click="btnNo" class="btn-gray">No</button>
                     <button @click="btnYes" class="btn-green">Yes</button>
+                    <slot>111</solt>
                 </div>
             </div>
         </div>
@@ -16,14 +17,17 @@
         data() {
             return {
                 tipsContent: '是否删除？',
-                del:true
+                del: {
+                    flag: true,
+                    num: 0
+                }
             }
         },
         computed: {
-            modalShow(){
+            modalShow() {
                 return this.modalShow = this.modalControl.modalShowWrapper;
             },
-            tipShow(){
+            tipShow() {
                 return this.tipShow = this.modalControl.modalShowWrapper;
             }
         },
@@ -33,12 +37,17 @@
                 this.modalControl.modalShowWrapper = false;
             },
             btnYes() {
-                
-                this.$emit('modalYes',this.del);
+                if (this.modalControl.delCount == 1) {
+                    this.del.num = 1
+                } else {
+                    this.del.num = 0;
+                }
+                this.$emit('modalYes', this.del);
                 this.modalControl.modalShowWrapper = false;
             }
         },
     }
+
 </script>
 <style>
     #modalbg {

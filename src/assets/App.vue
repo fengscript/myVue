@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <modal :modalControl="modalOption" @modalYes="delConfirm"></modal>
+        <modal :modalControl="modalOption" @modalYes="delConfirm">
+            <span>slot test</span>
+        </modal>
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
 
 
@@ -13,8 +15,6 @@
             </span>-->
 
         <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
-
-
         <ul class="todoList">
             <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}">
                 {{item.content}}
@@ -22,7 +22,6 @@
             </li>
             <router-view class="routerView"></router-view>
         </ul>
-
     </div>
 </template>
 <script>
@@ -37,7 +36,8 @@
                 newItem: '',
                 isFinished: false,
                 modalOption: {
-                    modalShowWrapper: false
+                    modalShowWrapper: false,
+                    delCount: 0
                 },
                 itemTemp: 0,
                 explainTrigger: false,
@@ -56,8 +56,8 @@
             },
         },
         computed: {
-            itemCount(){
-                    if ( this.items.length > 0)
+            itemCount() {
+                if (this.items.length > 1)
                     return true;
             },
         },
@@ -77,16 +77,26 @@
                 }
             },
             delConfirm(res) {
-                if (res == true)
-                    this.items.splice(this.items.indexOf(this.itemTemp), 1)
+                if (res.flag == true) {
+                    if (res.num == 1) {
+                        this.items.splice(this.items.indexOf(this.itemTemp), 1)
+                    } else {
+                        Store.delAll();
+                        window.location.reload();
+                    }
+                }
+
             },
             delOne(item) {
                 this.itemTemp = item;
                 this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
+                this.modalOption.delCount = 1;
             },
             delAll() {
-                Store.delAll();
-                window.location.reload();
+                this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
+                this.modalOption.delCount = 0;
+                // Store.delAll();
+                // window.location.reload();
             },
             explainIt() {
                 this.explainTrigger = true;
@@ -106,6 +116,7 @@
     // const router = new VueRouter({
     //     routes:innerRoutes
     // })
+
 </script>
 <style>
     .container {
@@ -113,22 +124,26 @@
         font-size: 30px;
         text-align: center;
     }
+    
     .container input {
         text-indent: 18px;
         margin: 40px 0 20px;
     }
+    
     .container input,
     .todoList {
         min-width: 300px;
     }
-
+    
     .routerView {
         color: #57D2F7;
         font-size: 16px;
     }
-    .routerView:hover{
+    
+    .routerView:hover {
         cursor: initial;
     }
+    
     .del {
         font-size: 30px;
         font-weight: bold;
@@ -140,25 +155,25 @@
         visibility: hidden;
         margin-left: 50px;
     }
-
+    
     .todoList li:hover .del {
         visibility: visible;
     }
-
+    
     .todoList {
         cursor: pointer;
         display: block;
         font-size: 30px;
     }
-
+    
     .delAll-btn:hover {
         color: red;
     }
-
+    
     .detail-btn:hover {
         color: #57D2F7;
     }
-
+    
     .finished {
         text-decoration: line-through;
         color: red;
