@@ -41,7 +41,6 @@
                 },
                 itemTemp: 0,
                 explainTrigger: false,
-                itemCount: false,
             }
         },
         components: {

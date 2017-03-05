@@ -16,7 +16,7 @@
     export default {
         data() {
             return {
-                tipsContent: '是否删除？',
+                // tipsContent: '111',
                 del: {
                     flag: true,
                     num: 0
@@ -29,6 +29,13 @@
             },
             tipShow() {
                 return this.tipShow = this.modalControl.modalShowWrapper;
+            },
+            tipsContent:function() {
+                if (this.modalControl.delCount == 1) {
+                return this.tipsContent = "是否删除一项？"
+                } else {
+                return this.tipsContent = "是否全部删除？"
+                }
             }
         },
         props: ['modalControl'],
