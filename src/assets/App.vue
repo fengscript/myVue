@@ -164,7 +164,10 @@
         display: block;
         font-size: 30px;
     }
-    
+    .delAll-btn{
+        position: absolute;
+        z-index: 1;
+        }
     .delAll-btn:hover {
         color: red;
     }
