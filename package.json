@@ -12,7 +12,8 @@
     "animate": "^1.0.0",
     "font-awesome": "^4.7.0",
     "vue": "^2.1.0",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
