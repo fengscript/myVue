@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './assets/App.vue'
 import VueRouter from 'vue-router'
 import './main.css'
+import Vuex from 'vuex'
 
 
 Vue.use(VueRouter)
