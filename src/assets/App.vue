@@ -22,12 +22,21 @@
             </li>
             <router-view class="routerView"></router-view>
         </ul>
+        <div >
+            <p>{{ count }}</p>
+            <p>
+                <button @click="add">+</button>
+                <button @click="de">-</button>
+            </p>
+        </div>
     </div>
 </template>
 <script>
-    import './Reset.css'
-    import Store from './store.js'
-    import Modal from './Modal.vue'
+    import './Reset.css';
+    import Store from './store.js';
+    import Modal from './Modal.vue';
+
+
 
     export default {
         data() {
