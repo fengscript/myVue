@@ -94,15 +94,14 @@
             delAll() {
                 this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
                 this.modalOption.delCount = 0;
-                // Store.delAll();
-                // window.location.reload();
+
             },
             explainIt() {
                 this.explainTrigger = true;
             }
         }
     }
-    // Router
+    // Router Inline
     // const mainRoutes = [
     //     {
     //         path:'./home',component:Home
