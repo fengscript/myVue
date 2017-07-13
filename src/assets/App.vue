@@ -22,13 +22,6 @@
             </li>
             <router-view class="routerView"></router-view>
         </ul>
-        <div id="vuex test">
-            <p>1-1{{ count }}</p>
-            <p>
-                <button @click="add">+</button>
-                <button @click="de">-</button>
-            </p>
-        </div>
     </div>
 </template>
 <script>

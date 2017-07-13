@@ -7,7 +7,7 @@ export default{
      })
      todos.uid = todos.length;
      return todos;
-  },
+  }, 
   set(todos){
     window.localStorage.setItem(storage_key,JSON.stringify(todos))
   },
