@@ -6,7 +6,6 @@
         <h1>单击一项事项</h1>
         <h1>会被标记为完成状态</h1>
         <h1>红叉可以删除</h1>
-        <h1>enjoy it</h1>
     </div>
 </template>
 <style>
