@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'Vue'
 import App from './assets/App.vue'
 import VueRouter from 'vue-router'
 import './main.css'
@@ -13,42 +13,10 @@ const router = new VueRouter({
 })
 
 
-import Vuex from 'vuex';
-Vue.use(Vuex);
-const vuex = new Vuex.Store({
-  state: {
-    count: 0,
-  },
-  mutations: {
-    increment(state) {
-      state.count++
-    },
-    decrement(state) {
-      state.count--
-    }
-  }
-});
-// vuex.commit('increment');
-// console.log(vuex.state.count);
-
-// methods: {
-//     add() {
-//       store.commit('increament')
-//     },
-//     decrease() {
-//       store.commit('decrement')
-//     }
-//   }
-// computed: {
-//   count() {
-//     return store.state.count
-//   }
-// }
-
 new Vue({
   el: '#app',
   router,
-  vuex,
+  // vuex,
   render: h => h(App)
 })
 // const app = new Vue({
