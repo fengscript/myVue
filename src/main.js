@@ -1,23 +1,23 @@
-import Vue from 'Vue'
-import App from './assets/App.vue'
-import VueRouter from 'vue-router'
+import vue from 'vue'
+import app from './assets/app.vue'
+import vueRouter from 'vue-router'
 import './main.css'
 
 
-Vue.use(VueRouter)
+vue.use(vueRouter)
 import routeConfig from './assets/router.config'
 
 
-const router = new VueRouter({
+const router = new vueRouter({
   routes: routeConfig
 })
 
 
-new Vue({
+new vue({
   el: '#app',
   router,
   // vuex,
-  render: h => h(App)
+  render: h => h(app)
 })
 // const app = new Vue({
 //   router:router,

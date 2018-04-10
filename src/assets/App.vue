@@ -21,21 +21,21 @@ count - {{count}}
                 {{item.content}}
                 <button class="del" @click="delOne(item)">×</button>
             </li>
-            <router-view class="routerView"></router-view>
+            <!-- <router-view class="routerView"></router-view> -->
         </ul>
     </div>
 </template>
 <script>
-import "./Reset.css";
-import Store from "./store.js";
-import Modal from "./Modal.vue";
+import "./reset.css";
+import store from "./store.js";
+import modal from "./modal.vue";
 import state from "../state/state";
 
 export default {
   data() {
     return {
       count: state.vuex.state.count,
-      items: Store.get(),
+      items: store.get(),
       newItem: "",
       isFinished: false,
       modalOption: {
@@ -47,12 +47,12 @@ export default {
     };
   },
   components: {
-    Modal
+    modal
   },
   watch: {
     items: {
       handler(items) {
-        Store.set(items);
+        store.set(items);
       },
       deep: true
     }
@@ -88,7 +88,7 @@ export default {
         if (res.num == 1) {
           this.items.splice(this.items.indexOf(this.itemTemp), 1);
         } else {
-          Store.delAll();
+          store.delAll();
           window.location.reload();
         }
       }

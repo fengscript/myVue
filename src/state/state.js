@@ -1,7 +1,7 @@
 
-import Vue from 'vue';
+import vue from 'vue';
 import Vuex from 'vuex';
-Vue.use(Vuex);
+vue.use(Vuex);
 const vuex = new Vuex.Store({
     state: {
         count: 0,
