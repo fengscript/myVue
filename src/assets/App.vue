@@ -64,10 +64,11 @@ export default {
   },
   methods: {
     increase() {
-      state.vuex.state.commit("increament");
+      state.vuex.commit('increment');
+      console.log(state.vuex.state.count);
     },
     decrease() {
-      state.vuex.state.commit("decreament");
+      state.vuex.commit('decrement');
     },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;

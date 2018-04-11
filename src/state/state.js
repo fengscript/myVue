@@ -1,10 +1,15 @@
-
 import vue from 'vue';
 import Vuex from 'vuex';
 vue.use(Vuex);
 const vuex = new Vuex.Store({
     state: {
         count: 0,
+    },
+    // 展示内容, 无法改变状态 
+    getters: {
+        // tripleCounter: state => {
+        //     return state.counter * 3;
+        // }
     },
     mutations: {
         increment(state) {
@@ -36,4 +41,6 @@ const vuex = new Vuex.Store({
 
 
 
-export default {vuex}
+export default {
+    vuex
+}
