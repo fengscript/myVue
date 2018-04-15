@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 vue.use(Vuex);
 const vuex = new Vuex.Store({
     state: {
-        count: 0,
+        count:9,
     },
     // 展示内容, 无法改变状态 
     getters: {

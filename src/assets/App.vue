@@ -6,7 +6,8 @@
         <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
         <button @click="increase">+</button>
         <button @click="decrease">-</button>
-count - {{count}}
+count - {{countVuex}}
+<!-- count - {{count}} -->
         <!--<span @click='explainIt()'>
                 <router-link to="/home" class="btn trans detail-btn">展开说明</router-link>
             </span>-->
@@ -34,7 +35,7 @@ import state from "../state/state";
 export default {
   data() {
     return {
-      count: state.vuex.state.count,
+      // count:state.vuex.state.count,
       items: store.get(),
       newItem: "",
       isFinished: false,
@@ -60,15 +61,19 @@ export default {
   computed: {
     itemCount() {
       if (this.items.length > 1) return true;
+    },
+    countVuex(){
+      return state.vuex.state.count
     }
   },
   methods: {
     increase() {
-      state.vuex.commit('increment');
+      // this.$store.commit('increment');
+      state.vuex.commit("increment");
       console.log(state.vuex.state.count);
     },
     decrease() {
-      state.vuex.commit('decrement');
+      state.vuex.commit("decrement");
     },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;
