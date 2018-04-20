@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 vue.use(Vuex);
 const vuex = new Vuex.Store({
     state: {
-        count:9,
+        count: 9,
     },
     // 展示内容, 无法改变状态 
     getters: {
@@ -17,6 +17,11 @@ const vuex = new Vuex.Store({
         },
         decrement(state) {
             state.count--
+        }
+    },
+    actions: {
+        increFromAction(context) {
+            context.commit('increment')
         }
     }
 });
