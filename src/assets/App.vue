@@ -69,7 +69,7 @@ export default {
   methods: {
     increase() {
       // this.$store.commit('increment');
-      state.vuex.commit("increment");
+      state.vuex.dispatch("increFromAction");
       // context.commite("increFromAction")
       console.log(state.vuex.state.count);
     },
