@@ -1,16 +1,15 @@
 <template>
-    <div class="root">
-        <div v-show="modalShow" id="modalbg">
-            <div v-show="tipShow" class="tips">
-                <span>{{tipsContent}}</span>
-                <div class="btnGroup">
-                    <button @click="btnNo" class="btn-gray">No</button>
-                    <button @click="btnYes" class="btn-green">Yes</button>
-                    <slot>111</slot>
-                </div>
-            </div>
+  <div class="root">
+    <div v-show="modalShow" id="modalbg">
+      <div v-show="tipShow" class="tips">
+        <span>{{tipsContent}}</span>
+        <div class="btnGroup">
+          <button @click="btnNo" class="btn-gray">No</button>
+          <button @click="btnYes" class="btn-green">Yes</button>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 export default {

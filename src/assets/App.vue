@@ -1,30 +1,22 @@
 <template>
-    <div class="container">
-        <modal :modalControl="modalOption" @modalYes="delConfirm">
-            <span>slot test</span>
-        </modal>
-        <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
-        <button @click="increase">+</button>
-        <button @click="decrease">-</button>
-count - {{countVuex}}
-<!-- count - {{count}} -->
-        <!--<span @click='explainIt()'>
-                <router-link to="/home" class="btn trans detail-btn">展开说明</router-link>
-            </span>-->
-        <!--
-            <span v-if="explainTrigger">
-                <router-link to="/news"  class="btn trans detail-btn">我知道了</router-link>
-            </span>-->
+  <div class="container">
+    <modal :modalControl="modalOption" @modalYes="delConfirm">
+    </modal>
+    <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
 
-        <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
-        <ul class="todoList">
-            <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}" v-bind:key="item">
-                {{item.content}}
-                <button class="del" @click="delOne(item)">×</button>
-            </li>
-            <!-- <router-view class="routerView"></router-view> -->
-        </ul>
-    </div>
+    <!-- <span @click='explainIt()'>
+                <router-link to="/home" class="btn trans detail-btn">展开说明</router-link>
+            </span> -->
+
+    <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
+    <ul class="todoList">
+      <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}" v-bind:key="item">
+        {{item.content}}
+        <button class="del" @click="delOne(item)">×</button>
+      </li>
+      <!-- <router-view class="routerView"></router-view> -->
+    </ul>
+  </div>
 </template>
 <script>
 import "./reset.css";
@@ -35,7 +27,6 @@ import state from "../state/state";
 export default {
   data() {
     return {
-      // count:state.vuex.state.count,
       items: store.get(),
       newItem: "",
       isFinished: false,
@@ -61,21 +52,9 @@ export default {
   computed: {
     itemCount() {
       if (this.items.length > 1) return true;
-    },
-    countVuex(){
-      return state.vuex.state.count
     }
   },
   methods: {
-    increase() {
-      // this.$store.commit('increment');
-      state.vuex.dispatch("increFromAction");
-      // context.commite("increFromAction")
-      console.log(state.vuex.state.count);
-    },
-    decrease() {
-      state.vuex.commit("decrement");
-    },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;
     },
@@ -114,19 +93,6 @@ export default {
     }
   }
 };
-// Router Inline
-// const mainRoutes = [
-//     {
-//         path:'./home',component:Home
-//     },
-//     {
-//         path:'./news',component:News
-//     }
-// ]
-
-// const router = new VueRouter({
-//     routes:innerRoutes
-// })
 </script>
 <style>
 .container {
