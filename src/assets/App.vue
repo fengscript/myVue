@@ -4,17 +4,12 @@
     </modal>
     <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
 
-    <!-- <span @click='explainIt()'>
-                <router-link to="/home" class="btn trans detail-btn">展开说明</router-link>
-            </span> -->
-
     <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
     <ul class="todoList">
       <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}" v-bind:key="item">
         {{item.content}}
         <button class="del" @click="delOne(item)">×</button>
       </li>
-      <!-- <router-view class="routerView"></router-view> -->
     </ul>
   </div>
 </template>
