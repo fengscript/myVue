@@ -5,13 +5,15 @@
         <span>{{tipsContent}}</span>
         <div class="btnGroup">
           <button @click="btnNo" class="btn-gray">No</button>
-          <button @click="btnYes" class="btn-green">Yes</button>
+          <button @click="btnYes" class="btn-gr
+          een">Yes</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+// import state from "../state/state";
 export default {
   data() {
     return {
@@ -39,7 +41,9 @@ export default {
   props: ["modalControl"],
   methods: {
     btnNo() {
+      console.log(this.$store.state);
       this.modalControl.modalShowWrapper = false;
+      // this.$
     },
     btnYes() {
       if (this.modalControl.delCount == 1) {

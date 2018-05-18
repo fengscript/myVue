@@ -1,8 +1,10 @@
 <template>
   <div class="container">
-    <modal :modalControl="modalOption" @modalYes="delConfirm">
+    <modal  v-bind:modalControl="modalOption" @modalYes="delConfirm">
     </modal>
     <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
+
+    <button @click="test">测试</button>
 
     <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
     <ul class="todoList">
@@ -17,8 +19,9 @@
 import "./reset.css";
 import store from "./store.js";
 import modal from "./modal.vue";
-import state from "../state/state";
 
+// import state from "../state/state";
+// const vuex = state.vuex;
 export default {
   data() {
     return {
@@ -30,7 +33,7 @@ export default {
         delCount: 0
       },
       itemTemp: 0,
-      explainTrigger: false
+      explainTrigger: false,
     };
   },
   components: {
@@ -47,9 +50,13 @@ export default {
   computed: {
     itemCount() {
       if (this.items.length > 1) return true;
-    }
+    },
+    
   },
   methods: {
+    test(){
+      console.log(this);
+    },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;
     },
@@ -61,9 +68,12 @@ export default {
         });
         this.newItem = "";
       } else {
-        alert("什么东西都木有！");
+        alert("空的");
       }
     },
+
+
+
     delConfirm(res) {
       if (res.flag == true) {
         if (res.num == 1) {

@@ -1,35 +1,31 @@
-import vue from 'vue';
+import Vue from 'vue';
 import Vuex from 'vuex';
-vue.use(Vuex);
-const vuex = new Vuex.Store({
+Vue.use(Vuex);
+const state = new Vuex.Store({
     state: {
-        count: 9,
+        count: 0,
+        modalState: false,
     },
-
-    getters: {
-        // tripleCounter: state => {
-        //     return state.counter * 3;
-        // }
-    },
+    // getters: {
+    // },
     mutations: {
         increment(state) {
             state.count++
         },
         decrement(state) {
-            setTimeout(function() {
+            setTimeout(function () {
                 state.count--
             }, 2000);
-        }
+        },
+        modalShow(state){
+            state.modalState = true;
+        },
+        modalHide(state){
+            state.modalState = false;
+        },
     },
-    actions: {
-        // increFromAction(context) {
-        //     setTimeout(function() {
-        //         context.commit('increment')
-        //     }, 2000);
-        // }
-    }
+    // actions: {
+    // }
 });
 
-export default {
-    vuex
-}
+export default state

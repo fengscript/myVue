@@ -1,13 +1,11 @@
 import vue from 'vue'
-import app from './assets/app.vue'
+import app from './assets/App.vue'
+import store from "./state/state";
 import vueRouter from 'vue-router'
-import './main.css'
-import { vuex } from "vuex";
+import routeConfig from './assets/router.config'
 
 
 vue.use(vueRouter)
-import routeConfig from './assets/router.config'
-
 
 const router = new vueRouter({
   routes: routeConfig
@@ -17,7 +15,7 @@ const router = new vueRouter({
 new vue({
   el: '#app',
   router,
-  // vuex,
+  store,
   render: h => h(app)
 })
 // const app = new Vue({
