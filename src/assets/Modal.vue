@@ -5,8 +5,7 @@
         <span>{{tipsContent}}</span>
         <div class="btnGroup">
           <button @click="btnNo" class="btn-gray">No</button>
-          <button @click="btnYes" class="btn-gr
-          een">Yes</button>
+          <button @click="btnYes" class="btn-green">Yes</button>
         </div>
       </div>
     </div>
@@ -98,6 +97,7 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   margin: 20px;
+  transition: all .35s ease;
 }
 
 .btn-gray {
@@ -111,8 +111,10 @@ export default {
 }
 
 .btn-gray:hover {
-  color: #ff5144;
-  border: 2px solid #ff5144;
+  color: #ffffff;
+  /* border: 2px solid #ff5144; */
+  border-color: #ff5144;
+  background:  #ff5144;
 }
 
 .btn-green:hover {

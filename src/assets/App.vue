@@ -17,7 +17,7 @@
 </template>
 <script>
 import "./reset.css";
-import store from "./store.js";
+import storage from "./storage.js";
 import modal from "./modal.vue";
 
 // import state from "../state/state";
@@ -25,7 +25,7 @@ import modal from "./modal.vue";
 export default {
   data() {
     return {
-      items: store.get(),
+      items: storage.get(),
       newItem: "",
       isFinished: false,
       modalOption: {
@@ -42,7 +42,7 @@ export default {
   watch: {
     items: {
       handler(items) {
-        store.set(items);
+        storage.set(items);
       },
       deep: true
     }
@@ -55,7 +55,9 @@ export default {
   },
   methods: {
     test(){
-      console.log(this);
+      this.$store.commit("increment")
+      console.log(this.$store.state.count);
+
     },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;
@@ -72,14 +74,12 @@ export default {
       }
     },
 
-
-
     delConfirm(res) {
       if (res.flag == true) {
         if (res.num == 1) {
           this.items.splice(this.items.indexOf(this.itemTemp), 1);
         } else {
-          store.delAll();
+          storage.delAll();
           window.location.reload();
         }
       }
