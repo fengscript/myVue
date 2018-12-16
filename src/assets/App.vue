@@ -1,16 +1,34 @@
 <template>
   <div class="container">
-    <modal  v-bind:modalControl="modalOption" @modalYes="delConfirm">
+    <modal
+      v-bind:modalControl="this.$store.state.modalState"
+      @modalYes="delConfirm"
+    >
     </modal>
-    <input type="text" name="input-area" placeholder="To do list" v-on:keyup.enter="setNew" v-model="newItem">
-
-    <button @click="test">测试</button>
-
-    <span v-if="itemCount" class="btn delAll-btn trans" @click="delAll">全部删除</span>
+    <input
+      type="text"
+      name="input-area"
+      placeholder="To do list"
+      v-on:keyup.enter="setNew"
+      v-model="newItem"
+    >
+    <span
+      v-if="itemCount"
+      class="btn delAll-btn trans"
+      @click="delAll"
+    >全部删除</span>
     <ul class="todoList">
-      <li v-for="item in items" @click="toggleFinish(item)" v-bind:class="{finished:item.isFinished}" v-bind:key="item">
+      <li
+        v-for="item in items"
+        @click="toggleFinish(item)"
+        v-bind:class="{finished:item.isFinished}"
+        v-bind:key="item"
+      >
         {{item.content}}
-        <button class="del" @click="delOne(item)">×</button>
+        <button
+          class="del"
+          @click="delOne(item)"
+        >×</button>
       </li>
     </ul>
   </div>
@@ -28,12 +46,9 @@ export default {
       items: storage.get(),
       newItem: "",
       isFinished: false,
-      modalOption: {
-        modalShowWrapper: false,
-        delCount: 0
-      },
       itemTemp: 0,
       explainTrigger: false,
+      anitest: false
     };
   },
   components: {
@@ -50,15 +65,9 @@ export default {
   computed: {
     itemCount() {
       if (this.items.length > 1) return true;
-    },
-    
+    }
   },
   methods: {
-    test(){
-      this.$store.commit("increment")
-      console.log(this.$store.state.count);
-
-    },
     toggleFinish(item) {
       item.isFinished = !item.isFinished;
     },
@@ -75,8 +84,8 @@ export default {
     },
 
     delConfirm(res) {
-      if (res.flag == true) {
-        if (res.num == 1) {
+      if (this.$store.state.modalState === true) {
+        if (this.$store.state.modalDelCount === 1) {
           this.items.splice(this.items.indexOf(this.itemTemp), 1);
         } else {
           storage.delAll();
@@ -86,12 +95,14 @@ export default {
     },
     delOne(item) {
       this.itemTemp = item;
-      this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
-      this.modalOption.delCount = 1;
+      // this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
+      // this.modalOption.delCount = 1;
+      this.$store.commit("delOne");
     },
     delAll() {
-      this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
-      this.modalOption.delCount = 0;
+      // this.modalOption.modalShowWrapper = !this.modalOption.modalShowWrapper;
+      // this.modalOption.delCount = 0;
+      this.$store.commit("delAll");
     },
     explainIt() {
       this.explainTrigger = true;

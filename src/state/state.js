@@ -5,6 +5,8 @@ const state = new Vuex.Store({
     state: {
         count: 0,
         modalState: false,
+        modalDelCount:1,
+        modalConfirm: false,
     },
     // getters: {
     // },
@@ -17,12 +19,25 @@ const state = new Vuex.Store({
                 state.count--
             }, 2000);
         },
-        modalShow(state){
+        delOne(state){
             state.modalState = true;
+            state.modalDelCount = 1;
         },
-        modalHide(state){
+        delAll(state){
+            state.modalState = true;
+            state.modalDelCount = 0;
+        },
+        btnConfirm(state){
+            state.modalConfirm = true;
             state.modalState = false;
         },
+        btnCancel(state){
+            state.modalConfirm = false;
+            state.modalState = false;
+        },
+        modalHide(state){
+            state.modalState=false;
+        }
     },
     // actions: {
     // }

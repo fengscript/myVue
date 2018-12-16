@@ -1,14 +1,32 @@
 <template>
   <div class="root">
-    <div v-show="modalShow" id="modalbg">
-      <div v-show="tipShow" class="tips">
-        <span>{{tipsContent}}</span>
-        <div class="btnGroup">
-          <button @click="btnNo" class="btn-gray">No</button>
-          <button @click="btnYes" class="btn-green">Yes</button>
+    <transition
+      name="modal"
+      v-on:after-leave="afterModalLeave"
+      mode="in-out"
+    >
+      <div
+        v-show="modalShow"
+        id="modalbg"
+      >
+        <div
+          v-show="tipShow"
+          class="tips"
+        >
+          <span>{{tipsContent}}</span>
+          <div class="btnGroup">
+            <button
+              @click="btnNo"
+              class="btn-gray"
+            >No</button>
+            <button
+              @click="btnYes"
+              class="btn-green"
+            >Yes</button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
@@ -16,47 +34,64 @@
 export default {
   data() {
     return {
-      del: {
-        flag: true,
-        num: 0
-      }
+      // del: {
+      //   num: 0
+      // }
     };
   },
   computed: {
     modalShow() {
-      return (this.modalShow = this.modalControl.modalShowWrapper);
+      return this.$store.state.modalState;
+      // return (this.modalShow = this.modalControl.modalShowWrapper);
     },
     tipShow() {
-      return (this.tipShow = this.modalControl.modalShowWrapper);
+      return (this.tipShow = this.$store.state.modalState);
+      // return (this.tipShow = this.modalControl.modalShowWrapper);
     },
     tipsContent: function() {
-      if (this.modalControl.delCount == 1) {
+      if (this.$store.state.modalDelCount === 1) {
         return (this.tipsContent = "是否删除一项？");
       } else {
         return (this.tipsContent = "是否全部删除？");
       }
+      // if (this.modalControl.delCount == 1) {
+      //   return (this.tipsContent = "是否删除一项？");
+      // } else {
+      //   return (this.tipsContent = "是否全部删除？");
+      // }
     }
   },
   props: ["modalControl"],
   methods: {
     btnNo() {
-      console.log(this.$store.state);
-      this.modalControl.modalShowWrapper = false;
-      // this.$
+      // this.modalControl.modalShowWrapper = false;
+      this.$store.commit("btnCancel");
     },
     btnYes() {
-      if (this.modalControl.delCount == 1) {
-        this.del.num = 1;
-      } else {
-        this.del.num = 0;
-      }
-      this.$emit("modalYes", this.del);
-      this.modalControl.modalShowWrapper = false;
+      this.$emit("modalYes");
+      this.$store.commit("btnConfirm");
+      // if (this.modalControl.delCount == 1) {
+      //   this.del.num = 1;
+      // } else {
+      //   this.del.num = 0;
+      // }
+      // this.modalControl.modalShowWrapper = false;
+    },
+    afterModalLeave() {
+      // this.$store.commit("modalHide");
     }
   }
 };
 </script>
 <style>
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity .35s ease-in-out;
+}
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+}
 #modalbg {
   background: rgba(0, 0, 0, 0.85);
   position: fixed;
@@ -97,7 +132,7 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   margin: 20px;
-  transition: all .35s ease;
+  transition: all 0.35s ease;
 }
 
 .btn-gray {
@@ -114,7 +149,7 @@ export default {
   color: #ffffff;
   /* border: 2px solid #ff5144; */
   border-color: #ff5144;
-  background:  #ff5144;
+  background: #ff5144;
 }
 
 .btn-green:hover {
@@ -123,3 +158,5 @@ export default {
 }
 /*Response*/
 </style>
+
+
