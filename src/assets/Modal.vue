@@ -2,8 +2,6 @@
   <div class="root">
     <transition
       name="modal"
-      v-on:after-leave="afterModalLeave"
-      mode="in-out"
     >
       <div
         v-show="modalShow"
@@ -77,9 +75,6 @@ export default {
       // }
       // this.modalControl.modalShowWrapper = false;
     },
-    afterModalLeave() {
-      // this.$store.commit("modalHide");
-    }
   }
 };
 </script>

@@ -12,11 +12,13 @@
       v-on:keyup.enter="setNew"
       v-model="newItem"
     >
-    <span
-      v-if="itemCount"
-      class="btn delAll-btn trans"
-      @click="delAll"
-    >全部删除</span>
+    <transition name="delAllBtnWrapper">
+      <span
+        v-if="itemCount"
+        class="btn delAll-btn trans"
+        @click="delAll"
+      >全部删除</span>
+    </transition>
     <ul class="todoList">
       <li
         v-for="item in items"
@@ -158,11 +160,33 @@ export default {
   font-size: 30px;
 }
 .delAll-btn {
+  border-radius: 4px;
   position: absolute;
-  z-index: 1;
+  top: 42px;
+  margin-left: 40px;
+  font-size: 20px;
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #ff5144;
+  line-height: 40px;
+  cursor: pointer;
+  transition: all 0.35s ease;
 }
 .delAll-btn:hover {
-  color: red;
+  color: #fff;
+  background: #ff5144;
+}
+.delAllBtnWrapper-enter-active,
+.delAllBtnWrapper-leave-active {
+  transition: opacity 0.35s ease-in-out;
+}
+.delAllBtnWrapper-enter,
+.delAllBtnWrapper-leave-to {
+  opacity: 0;
+}
+.delAll-btn:hover {
+  color: ff5144;
 }
 
 .detail-btn:hover {
@@ -171,6 +195,6 @@ export default {
 
 .finished {
   text-decoration: line-through;
-  color: red;
+  color: ff5144;
 }
 </style>
